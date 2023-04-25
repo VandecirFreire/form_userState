@@ -1,15 +1,18 @@
 import React, { useState } from 'react'
 import { LabelForm } from './LabelForm'
 
-export const UserForm = () => {
+export const UserFormObjecUser = () => {
 // useState [variavel, sempre inicia com set metodo que atualiza] = valor inicial
-  const [nome, setNome] = useState()
-  const [email, setEmail] = useState()
-  const [senha, setSenha] = useState()
+  const [user, setUser] = useState({
+    nome: '',
+    email: '',
+    senha: ''
+  });
+
 
   const submitForm = (event) => {
     event.preventDefault()
-    console.log('submit', nome, email, senha)
+    console.log('submit', user)
   }
 
   return (
@@ -25,8 +28,8 @@ export const UserForm = () => {
             name='nome' 
             id='nome' 
             className='form-control' 
-            onChange={e => setNome(e.target.value)}
-            value={nome}
+            onChange={(e) => setUser({...user, nome: e.target.value})}
+            value={user.nome}
           />
         </div>
 
@@ -38,8 +41,8 @@ export const UserForm = () => {
             name="email" 
             id="e-mail" 
             className='form-control' 
-            onChange={e => setEmail(e.target.value)}
-            value={email}
+            onChange={(e) => setUser({...user, email: e.target.value})}
+            value={user.email}
           />
         </div>
 
@@ -51,8 +54,8 @@ export const UserForm = () => {
             name="senha" 
             id="senha" 
             className='form-control' 
-            onChange={e => setSenha(e.target.value)}
-            value={senha}
+            onChange={(e) => setUser({...user, senha: e.target.value})}
+            value={user.senha}
           />
         </div>
 
